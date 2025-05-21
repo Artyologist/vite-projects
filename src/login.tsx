@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
     username: '',
-    password: '',
-    
-  });
+    password: ''
+    });
   const [submittedData, setSubmittedData] = useState<any>(null);
 
   const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,6 +14,7 @@ const Login = () => {
   };
 
   
+
 
   const handleLoginSubmit = () => {
    setSubmittedData(loginData)
@@ -30,12 +31,14 @@ const Login = () => {
         <p>{loginData.username}</p>
             <p>{loginData.password} </p>
       <h1>Login Form</h1>
-      <input type="text" placeholder="Username" value={loginData.username} onChange={handleLoginChange}/><br /><br />
-      <input type="password" placeholder="Password"  value={loginData.password} onChange={handleLoginChange}/><br /><br />
+      <input type="text" name='username' placeholder="Username" value={loginData.username} onChange={handleLoginChange}/><br /><br />
+      <input type="password"  name='password' placeholder="Password"  value={loginData.password} onChange={handleLoginChange}/><br /><br />
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleLoginSubmit}>Login</button>
-
+      <Link to="/register">
+        <button>Register</button></Link>
       {submittedData && <p>{JSON.stringify(submittedData)}</p>}
+      
     </div>
   );
 };
